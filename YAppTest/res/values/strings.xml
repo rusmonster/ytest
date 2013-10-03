@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">YAppTestTest</string>
-
+	<string name="test_str">test_str</string>
+	
 </resources>

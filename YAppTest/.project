@@ -31,4 +31,11 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>res2</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/yapp/res</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

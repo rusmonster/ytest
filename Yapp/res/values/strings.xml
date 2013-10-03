@@ -4,5 +4,6 @@
     <string name="app_name">Yapp</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="app_str">app_str</string>
 
 </resources>
