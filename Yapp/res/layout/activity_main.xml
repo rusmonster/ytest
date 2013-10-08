@@ -5,10 +5,30 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/hello_world" />
+    
+    <Button 
+        android:id="@+id/my_btn"
+        android:text="@string/my_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonClick"
+        />
+    <Button 
+        android:id="@+id/mybtn2"
+        android:text="@string/my_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_btn"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonClick"
+        />
 
 </RelativeLayout>

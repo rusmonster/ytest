@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <application
@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.monster.yapp.SecActivity"
+            android:label="@string/title_activity_sec"
+            android:theme="@android:style/Theme.Dialog"
+            >
+        </activity>
+        <activity
+            android:name="com.monster.yapp.ThreeActivity"
+            android:label="@string/three_activity"
+            >
+            <intent-filter >
+                <action android:name="com.monster.yapp.my_three_act"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name=".service.CMService"></service>
     </application>
 
 </manifest>

@@ -35,4 +35,46 @@ public class NDKTestCase extends AndroidTestCase {
 		str = CMYappNDK.GetString();
 		Log.d(TAG, "str3: "+str);
 	}
+	
+	private void printArray(String title, int[] arr) {
+		StringBuilder sb = new StringBuilder();
+		for (int i=0; i<arr.length; i++) {
+			sb.append(arr[i]);
+			sb.append(',');
+		}
+		Log.i(TAG, title+":\n"+sb.toString());
+	}
+	
+	public void testQuickSort() {
+		int[] a = new int[1];
+		for (int i=0; i<a.length; i++)
+			a[i] = (int) Math.round(Math.random()*100000);
+		
+		printArray("src: ", a);
+		
+		CMYappNDK.QuickSort(a);
+		
+		printArray("dst: ", a);
+		
+		for (int i=1; i<a.length; i++)
+			assertTrue("fail on i="+i, a[i-1]<=a[i]);
+	}
+	
+	public void testRadixSort() {
+		int[] a = new int[100000];
+		for (int i=0; i<a.length; i++)
+			a[i] = (int) Math.round(Math.random()*Math.pow(10,(i%6+1)));
+		
+		printArray("src: ", a);
+		
+		CMYappNDK.RadixSort(a);
+		
+		printArray("dst: ", a);
+		
+		for (int i=1; i<a.length; i++)
+			assertTrue("fail on i="+i, a[i-1]>=a[i]);
+	}
+	public void testTest() {
+		assertEquals(0, CMYappNDK.Test());
+	}
 }

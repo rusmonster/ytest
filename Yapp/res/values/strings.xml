@@ -5,5 +5,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="app_str">app_str</string>
+    <string name="dialog">Dialog</string>
+    <string name="title_activity_sec">SecActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="two_activity">two activity</string>
+    <string name="my_btn">my btn</string>
+    <string name="my_btn2">my btn2</string>
+    <string name="my_text">my text</string>
+    <string name="three_activity">Three activity</string>
+    <string name="run_pi">run pi</string>
+    <string name="run_task">run task</string>
 
 </resources>
