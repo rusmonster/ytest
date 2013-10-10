@@ -112,6 +112,7 @@ public class XmlTestCase extends AndroidTestCase {
 
 		InputStream xmlIs = getContext().getResources().openRawResource(com.monster.yapp.R.raw.test);
 		List<Message> messsages = new LinkedList<Message>();
+		
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
