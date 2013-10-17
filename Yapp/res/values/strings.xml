@@ -14,6 +14,6 @@
     <string name="my_text">my text</string>
     <string name="three_activity">Three activity</string>
     <string name="run_pi">run pi</string>
+    <string name="run_bc">run bc</string>
     <string name="run_task">run task</string>
-
 </resources>

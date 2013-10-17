@@ -29,23 +29,52 @@ public class CMService extends Service {
 
 
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
+	public int onStartCommand(final Intent intent, int flags, int startId) {
 		if (intent!=null) {
 			final int tim = intent.getIntExtra(ThreeActivity.PARAM_TIM, 0);
 			final PendingIntent pi = intent.getParcelableExtra(ThreeActivity.PARAM_PI);
 			
-			mEs.execute(new Runnable() {
+			Runnable r;
+			
+			if (pi!=null)
+				r = new Runnable() {
+					
+					@Override
+					public void run() {
+						try {
+							pi.send(ThreeActivity.EVENT_START);
+							
+							Thread.sleep(tim);
+							
+							Intent i = new Intent().putExtra(ThreeActivity.PARAM_RESULT, "OK");
+							
+							pi.send(CMService.this, ThreeActivity.EVENT_STOP, i);
+							
+							Log.i("!!!", "Task done: "+tim);
+						} catch (Exception e) {
+							Log.e("!!!", "Error in mEs.execute: "+e);
+						}
+							
+					}
+				};
+			else
+				r = new Runnable() {
 				
 				@Override
 				public void run() {
 					try {
-						pi.send(ThreeActivity.EVENT_START);
+						Intent i = new Intent(ThreeActivity.BC_ACTION);
+						i.putExtra(ThreeActivity.PARAM_TASK, intent.getIntExtra(ThreeActivity.PARAM_TASK, 0));
+						i.putExtra(ThreeActivity.PARAM_EVENT, ThreeActivity.EVENT_START);
+						sendBroadcast(i);
 						
 						Thread.sleep(tim);
 						
-						Intent i = new Intent().putExtra(ThreeActivity.PARAM_RESULT, "OK");
-						
-						pi.send(CMService.this, ThreeActivity.EVENT_STOP, i);
+						i = new Intent(ThreeActivity.BC_ACTION);
+						i.putExtra(ThreeActivity.PARAM_TASK, intent.getIntExtra(ThreeActivity.PARAM_TASK, 0));
+						i.putExtra(ThreeActivity.PARAM_EVENT, ThreeActivity.EVENT_STOP);
+						i.putExtra(ThreeActivity.PARAM_RESULT, "OK");
+						sendBroadcast(i);
 						
 						Log.i("!!!", "Task done: "+tim);
 					} catch (Exception e) {
@@ -53,8 +82,11 @@ public class CMService extends Service {
 					}
 						
 				}
-			});
+			};				
+ 
+			mEs.execute(r);
 		}
+
 		return START_STICKY;
 	}
 

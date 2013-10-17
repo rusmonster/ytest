@@ -6,7 +6,10 @@ import com.monster.yapp.service.CMService;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.util.TimeUtils;
@@ -28,6 +31,9 @@ public class ThreeActivity extends Activity {
 	public static final String PARAM_TIM="PARAM_TIM";
 	public static final String PARAM_PI="PARAM_PI";
 	public static final String PARAM_RESULT="PARAM_RESULT";
+	public static final String PARAM_EVENT="PARAM_EVENT";
+
+	public static final String BC_ACTION="BC_ACTION";
 
 	private TextView mText;
 	private EditText mEdit;
@@ -50,6 +56,9 @@ public class ThreeActivity extends Activity {
 		}
 		
 		mEdit.setKeyListener(null);
+		
+		IntentFilter f = new IntentFilter(BC_ACTION);
+		registerReceiver(mBc, f);
 	}
 	
 	public void onClick(View v) {
@@ -74,7 +83,7 @@ public class ThreeActivity extends Activity {
 		
 		startService(i);
 	}
-
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -103,8 +112,9 @@ public class ThreeActivity extends Activity {
 	
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();
+		unregisterReceiver(mBc);
 		Log.i("!!!", getClass().getName()+": onDestroy()");
+		super.onDestroy();
 	}
 
 	private class CMTask extends AsyncTask<String, String, Boolean> {
@@ -169,5 +179,40 @@ public class ThreeActivity extends Activity {
 		else 
 			mTask.cancel(false);
 	
+	}
+
+	private class CMBroadcast extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			int event = arg1.getIntExtra(PARAM_EVENT, 0);
+			String res = arg1.getStringExtra(PARAM_RESULT);
+			int task = arg1.getIntExtra(PARAM_TASK, 0);
+			
+			mEdit.append("BC task: "+task+"; event: "+event+"; res: "+res+"\n");
+			
+		}
+		
+	}
+	
+	private CMBroadcast mBc = new CMBroadcast();
+	
+	public void onClickBc(View v) {
+		Intent i = new Intent(this, CMService.class);
+		i.putExtra(PARAM_TIM, 2000);
+		i.putExtra(PARAM_TASK, TASK1);
+		startService(i);
+		
+		i = new Intent(this, CMService.class);
+		i.putExtra(PARAM_TIM,3000);
+		i.putExtra(PARAM_TASK, TASK2);
+		
+		startService(i);
+
+		i = new Intent(this, CMService.class);
+		i.putExtra(PARAM_TIM,4000);
+		i.putExtra(PARAM_TASK, TASK3);
+		
+		startService(i);	
 	}
 }

@@ -27,7 +27,14 @@
         android:onClick="onClickTask"
         >
     </Button>
-
+    <Button
+        android:id="@+id/btRunBc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/run_bc"
+        android:onClick="onClickBc"
+        >
+    </Button>
     <EditText
         android:id="@+id/txtEdit"
         android:layout_width="match_parent"
