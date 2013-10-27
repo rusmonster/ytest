@@ -25,19 +25,25 @@
         <activity
             android:name="com.monster.yapp.SecActivity"
             android:label="@string/title_activity_sec"
-            android:theme="@android:style/Theme.Dialog"
-            >
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name="com.monster.yapp.ThreeActivity"
-            android:label="@string/three_activity"
-            >
-            <intent-filter >
-                <action android:name="com.monster.yapp.my_three_act"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+            android:label="@string/three_activity" >
+            <intent-filter>
+                <action android:name="com.monster.yapp.my_three_act" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <service android:name=".service.CMService"></service>
+
+        <service android:name="com.monster.yapp.service.CMService" >
+        </service>
+
+        <activity
+            android:name="com.monster.yapp.SlideActivity"
+            android:label="@string/title_activity_slide" >
+        </activity>
     </application>
 
 </manifest>

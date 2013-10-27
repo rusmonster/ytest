@@ -197,6 +197,9 @@ public class MainActivity extends Activity {
 			i.putExtra(CMParselable.class.getCanonicalName(), new CMParselable("hi from parselable"));
 			startActivity(i);
 			break;
+		case R.id.mybtn3:
+			startActivity(new Intent(this, SlideActivity.class));
+			break;
 		}
 	}
 }

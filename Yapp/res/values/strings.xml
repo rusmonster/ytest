@@ -16,4 +16,10 @@
     <string name="run_pi">run pi</string>
     <string name="run_bc">run bc</string>
     <string name="run_task">run task</string>
+    <string name="title_activity_slide">SlideActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="slide">Slide</string>
+
 </resources>
