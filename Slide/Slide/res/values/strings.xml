@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Slide</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <array name="data">
+       <item>Страница 1</item>
+       <item>Страница 2</item>
+       <item>Страница 3</item>
+    </array>
+
+</resources>
